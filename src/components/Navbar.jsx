@@ -3,8 +3,7 @@ import { Link } from "react-router-dom";
 import { CartContext } from "../context/CartContext";
 
 const Navbar = () => {
-
-    const {cart} = useContext(CartContext);
+  const { cart } = useContext(CartContext);
 
   return (
     <nav style={styles.navbar}>
@@ -23,11 +22,17 @@ const Navbar = () => {
       <div style={styles.right}>
         <span style={styles.icon}>❤️</span>
 
-        <div>
-            <Link to="/cart" style={styles.icon}>
-              🛒
-            </Link>
-            <span>({cart.length})</span>
+        {/* CART ICON WITH BADGE */}
+        <div style={styles.cartWrapper}>
+          <Link to="/cart" style={styles.icon}>
+            🛒
+          </Link>
+
+          {cart.length > 0 && (
+            <span style={styles.cartBadge}>
+              {cart.length}
+            </span>
+          )}
         </div>
 
         <button style={styles.loginBtn}>Login</button>
@@ -79,10 +84,26 @@ const styles = {
   },
 
   icon: {
-    fontSize: "20px",
+    fontSize: "22px",
     cursor: "pointer",
     textDecoration: "none",
     color: "#333",
+  },
+
+  cartWrapper: {
+    position: "relative",
+  },
+
+  cartBadge: {
+    position: "absolute",
+    top: "-6px",
+    right: "-10px",
+    backgroundColor: "red",
+    color: "#fff",
+    fontSize: "12px",
+    padding: "2px 6px",
+    borderRadius: "50%",
+    fontWeight: "bold",
   },
 
   loginBtn: {
