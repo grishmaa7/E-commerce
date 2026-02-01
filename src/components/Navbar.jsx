@@ -12,9 +12,21 @@ const Navbar = () => {
         <h2 style={styles.logo}>MyStore</h2>
 
         <ul style={styles.navLinks}>
-          <li><Link to="/" style={styles.link}>Home</Link></li>
-          <li><Link to="/about" style={styles.link}>About</Link></li>
-          <li><Link to="/product" style={styles.link}>Product</Link></li>
+          <li>
+            <Link to="/" style={styles.link}>
+              Home
+            </Link>
+          </li>
+          <li>
+            <Link to="/about" style={styles.link}>
+              About
+            </Link>
+          </li>
+          <li>
+            <Link to="/product" style={styles.link}>
+              Product
+            </Link>
+          </li>
         </ul>
       </div>
 
@@ -29,13 +41,13 @@ const Navbar = () => {
           </Link>
 
           {cart.length > 0 && (
-            <span style={styles.cartBadge}>
-              {cart.length}
-            </span>
+            <span style={styles.cartBadge}>{cart.length}</span>
           )}
         </div>
 
-        <button style={styles.loginBtn}>Login</button>
+        <Link to='/login'>
+          <button style={styles.loginBtn}>Login</button>
+        </Link>
       </div>
     </nav>
   );
